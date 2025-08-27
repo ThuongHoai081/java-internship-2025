@@ -6,12 +6,12 @@ package basic;
  * If the input number is not between 1 and 12, print an error message.
  */
 public class Exercise06 {
-    public String getMonthName(int month) {
-        String[] months = {
-                "January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-        };
+    private static final String[] months = {
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+    };
 
+    public String getMonthName(int month) {
         if (month < 1 || month > 12) {
             return "Error: Invalid month number";
         }
