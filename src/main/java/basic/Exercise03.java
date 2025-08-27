@@ -10,7 +10,7 @@ public class Exercise03 {
             return number + " cannot be factorized into prime numbers";
         }
 
-        StringBuilder result = new StringBuilder();
+        final StringBuilder result = new StringBuilder();
         int n = number;
 
         for (int i = 2; i * i <= n; i++) {
