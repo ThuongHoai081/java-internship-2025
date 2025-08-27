@@ -23,6 +23,7 @@ public class Exercise04 {
             b = a + b;
             a = temp;
         }
+
         return fibonacciNumbers;
     }
 }
