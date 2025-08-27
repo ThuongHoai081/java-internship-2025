@@ -16,7 +16,9 @@ public class Exercise04 {
             return fibonacciNumbers;
         }
 
-        int a = 1, b = 1;
+        int a = 1;
+        int b = 1;
+
         fibonacciNumbers.add(a);
 
         while (b <= n) {
