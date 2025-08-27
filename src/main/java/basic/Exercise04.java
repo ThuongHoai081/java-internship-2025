@@ -11,6 +11,7 @@ import java.util.List;
 public class Exercise04 {
     public List<Integer> findFibonacci(int n) {
         List<Integer> fibonacciNumbers = new ArrayList<>();
+
         if (n <= 0) {
             return fibonacciNumbers;
         }
