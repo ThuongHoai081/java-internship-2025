@@ -15,6 +15,7 @@ public class Exercise04 {
         if (n <= 0) {
             return fibonacciNumbers;
         }
+
         int a = 1, b = 1;
         fibonacciNumbers.add(a);
 
