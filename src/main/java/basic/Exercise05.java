@@ -10,14 +10,11 @@ public class Exercise05 {
         if (n < 0) return BigInteger.valueOf(-1);
         if (n == 0 || n == 1) return BigInteger.ONE;
 
-        return factorialDivideAndConquer(1, n);
-    }
+        BigInteger result = BigInteger.ONE;
 
-    public BigInteger factorialDivideAndConquer(int start, int end) {
-        if (start > end) return BigInteger.ONE;
-        if (start == end) return BigInteger.valueOf(start);
-        if (end - start == 1) return BigInteger.valueOf(start).multiply(BigInteger.valueOf(end));
-        int mid = (start + end) / 2;
-        return factorialDivideAndConquer(start, mid).multiply(factorialDivideAndConquer(mid + 1, end));
+        for (int i = 2; i <= n; i++) {
+            result = result.multiply(BigInteger.valueOf(i));
+        }
+        return result;
     }
 }
