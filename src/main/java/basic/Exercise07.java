@@ -9,9 +9,8 @@ public class Exercise07 {
     public long findReversedBinary(long n) {
         long reversed = 0;
         while (n > 0) {
-            long lastBit = n % 2;
-            reversed = (reversed * 2) + lastBit;
-            n = n / 2;
+            reversed = (reversed << 1) | (n & 1);
+            n >>= 1;
         }
         return reversed;
     }
