@@ -1,5 +1,7 @@
 package string;
 
+import static java.lang.Character.toUpperCase;
+
 public class Exercise01 {
     public boolean isPalindrome(String str) {
         int left = 0;
