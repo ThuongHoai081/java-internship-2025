@@ -10,21 +10,23 @@ public class Exercise04 {
         if (str == null || str.isEmpty()) return str;
 
         StringBuilder result = new StringBuilder();
-        char[] arr = str.toCharArray();
-        char currentChar = arr[0];
+        char currentChar = str.charAt(0);
         int count = 1;
 
-        for (int i = 1; i < arr.length; i++) {
-            char ch = arr[i];
+        for (int i = 1; i < str.length(); i++) {
+            char ch = str.charAt(i);
 
             if (ch == currentChar) {
                 count++;
-            } else {
-                result.append(currentChar);
-                if (count > 1) result.append(count);
-                currentChar = ch;
-                count = 1;
+                continue;
             }
+
+            result.append(currentChar);
+            if (count > 1) result.append(count);
+
+            currentChar = ch;
+            count = 1;
+
         }
 
         result.append(currentChar);
