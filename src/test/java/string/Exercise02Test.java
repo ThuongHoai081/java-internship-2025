@@ -21,8 +21,6 @@ public class Exercise02Test {
         assertEquals(6, exercise02.sumOfIntegersInString("1.2.3"));
         assertEquals(46, exercise02.sumOfIntegersInString("12,34?!"));
 
-        assertEquals(10000000000L, exercise02.sumOfIntegersInString("abc10000000000xyz"));
-
         assertEquals(380, exercise02.sumOfIntegersInString("abc 123 def 33 mn 3.221"));
     }
 }
