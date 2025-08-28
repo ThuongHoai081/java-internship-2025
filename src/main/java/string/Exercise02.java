@@ -12,7 +12,7 @@ public class Exercise02 {
         }
 
         long sum = 0;
-        StringBuilder numStr = new StringBuilder();
+        int num = 0;
 
         for (char ch : str.toCharArray()) {
             if (Character.isDigit(ch)) {
