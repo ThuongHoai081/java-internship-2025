@@ -3,6 +3,7 @@ package string;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class Exercise04Test {
     @Test
@@ -21,5 +22,7 @@ public class Exercise04Test {
         assertEquals("pq2", exercise04.shortenString("pqq"));
         assertEquals("ab13c", exercise04.shortenString("abbbbbbbbbbbbbc"));
         assertEquals("abc4e6fd", exercise04.shortenString("abcccceeeeeefd"));
+        assertEquals("", exercise04.shortenString(""));
+        assertNull(exercise04.shortenString(null));
     }
 }
