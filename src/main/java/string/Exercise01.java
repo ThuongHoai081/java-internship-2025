@@ -34,6 +34,7 @@ public class Exercise01 {
             left++;
             right--;
         }
+
         return true;
     }
 }
