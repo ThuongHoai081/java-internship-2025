@@ -27,7 +27,7 @@ public class Exercise01 {
                 continue;
             }
 
-            if (a != b) {
+            if (toUpperCase(a) != toUpperCase(b)) {
                 return false;
             }
 
