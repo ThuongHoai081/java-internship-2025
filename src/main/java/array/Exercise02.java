@@ -23,18 +23,18 @@ public class Exercise02 {
             if (isAscending) {
                 if (x < arr[mid]) {
                     right = mid - 1;
-                    continue;
+                } else {
+                    left = mid + 1;
                 }
 
-                left = mid + 1;
                 continue;
             }
 
             if (x > arr[mid]) {
                 right = mid - 1;
-                continue;
+            } else {
+                left = mid + 1;
             }
-            left = mid + 1;
         }
 
         return -1;
