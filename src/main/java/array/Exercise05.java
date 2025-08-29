@@ -8,16 +8,13 @@ public class Exercise05 {
     public int findMissingNumber(int[] arr) {
         int n = arr.length + 1;
 
-        int xorAll = 0;
-        for (int i = 0; i < n; i++) {
-            xorAll ^= i;
-        }
+        int expectedSum = n * (n + 1) / 2;
+        int actualSum = 0;
 
-        int xorArr = 0;
         for (int num : arr) {
-            xorArr ^= num;
+            actualSum += num;
         }
 
-        return xorAll ^ xorArr;
+        return expectedSum - actualSum;
     }
 }
