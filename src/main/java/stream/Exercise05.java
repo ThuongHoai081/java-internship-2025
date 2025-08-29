@@ -12,12 +12,16 @@ public class Exercise05 {
         if (arr == null) return 0;
 
         final int maxDigits = Arrays.stream(arr)
-                .map(n -> String.valueOf(Math.abs(n)).length())
+                .map(this::countDigits)
                 .max()
                 .orElse(0);
 
         return Arrays.stream(arr)
-                .filter(n -> String.valueOf(Math.abs(n)).length() == maxDigits)
+                .filter(n -> countDigits(n) == maxDigits)
                 .sum();
+    }
+
+    private int countDigits(int n) {
+        return String.valueOf(Math.abs(n)).length();
     }
 }
