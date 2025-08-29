@@ -11,8 +11,10 @@ public class Exercise03Test {
 
         assertEquals("One, Two, Three", exercise03.intToString(123));
         assertEquals("Nine, Zero, Seven", exercise03.intToString(907));
-        assertEquals("Zero", exercise03.intToString(0));
         assertEquals("Seven", exercise03.intToString(7));
-
+        assertEquals("Minus, One, Two, Three", exercise03.intToString(-123));
+        assertEquals("Minus, Nine, Zero, Seven", exercise03.intToString(-907));
+        assertEquals("Minus, Seven", exercise03.intToString(-7));
+        assertEquals("Zero", exercise03.intToString(0));
     }
 }

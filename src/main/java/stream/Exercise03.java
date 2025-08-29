@@ -1,23 +1,22 @@
 package stream;
 
+import java.util.stream.Collectors;
+
 /**
  * Exercise03: Write a stream program to read the digits of an integer, the result is a String.
  * For example, entering 123, the result is "One, Two, Three"
  */
 public class Exercise03 {
-    private static final String[] digitWords = {
-            "Zero", "One", "Two", "Three", "Four",
-            "Five", "Six", "Seven", "Eight", "Nine"
-    };
+    private static final String[] DIGIT_WORDS = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
 
     public String intToString(int number) {
-        if (number == 0) {
-            return "Zero";
-        }
+        boolean negative = number < 0;
+        int absNumber = Math.abs(number);
 
-        return String.valueOf(number).chars()
-                .mapToObj(c -> digitWords[Character.getNumericValue(c)])
-                .reduce((a, b) -> a + ", " + b)
-                .orElse("");
+        String digitsString = String.valueOf(absNumber).chars()
+                .mapToObj(c -> DIGIT_WORDS[Character.getNumericValue(c)])
+                .collect(Collectors.joining(", "));
+
+        return negative ? "Minus, " + digitsString : digitsString;
     }
 }
