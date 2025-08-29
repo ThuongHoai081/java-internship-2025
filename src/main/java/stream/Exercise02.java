@@ -13,8 +13,8 @@ public class Exercise02 {
         }
 
         final int n = arr.length + 1;
-        int expectedSum = n * (n + 1) / 2;
-        int actualSum = Arrays.stream(arr).sum();
+        final int expectedSum = n * (n + 1) / 2;
+        final int actualSum = Arrays.stream(arr).sum();
 
         return expectedSum - actualSum;
     }
