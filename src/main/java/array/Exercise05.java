@@ -6,7 +6,7 @@ package array;
  */
 public class Exercise05 {
     public int findMissingNumber(int[] arr) {
-        int n = arr.length + 1;
+        final int n = arr.length + 1;
 
         int expectedSum = n * (n + 1) / 2;
         int actualSum = 0;
