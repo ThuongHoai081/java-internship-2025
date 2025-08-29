@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class Exercise06Test {
     @Test
-    void shouldIsValidEAN13() {
+    void shouldIsValidEAN13_OK() {
         final Exercise06 exercise06 = new Exercise06();
         assertTrue(exercise06.isValidEAN13("4006381333931"));
         assertTrue(exercise06.isValidEAN13("9780201379624"));
