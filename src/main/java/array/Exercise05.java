@@ -6,7 +6,7 @@ package array;
  */
 public class Exercise05 {
     public int findMissingNumber(int[] arr) {
-        int n = arr.length + 1;
+        final int n = arr.length + 1;
 
         int xorAll = 0;
         for (int i = 0; i < n; i++) {
