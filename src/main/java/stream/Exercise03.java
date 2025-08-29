@@ -10,13 +10,10 @@ public class Exercise03 {
     private static final String[] DIGIT_WORDS = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
 
     public String intToString(int number) {
-        boolean negative = number < 0;
-        int absNumber = Math.abs(number);
-
-        String digitsString = String.valueOf(absNumber).chars()
+        final String digitsString = String.valueOf(Math.abs(number)).chars()
                 .mapToObj(c -> DIGIT_WORDS[Character.getNumericValue(c)])
                 .collect(Collectors.joining(", "));
 
-        return negative ? "Minus, " + digitsString : digitsString;
+        return number < 0 ? "Minus, " + digitsString : digitsString;
     }
 }
