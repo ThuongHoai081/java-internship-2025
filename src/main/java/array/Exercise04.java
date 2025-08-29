@@ -21,10 +21,9 @@ public class Exercise04 {
         while (i < len1 && j < len2) {
             if (arr1[i] <= arr2[j]) {
                 mergedArray[k++] = arr1[i++];
-                continue;
-            }
-
-            mergedArray[k++] = arr2[j++];
+            } else {
+                 mergedArray[k++] = arr2[j++];
+             }
         }
 
         while (i < len1) {
