@@ -70,7 +70,7 @@ Giải pháp hiệu quả, đã được kiểm chứng: giúp xử lý vấn đ
         // Private constructor to prevent instantiation
     }
 
-    public static Singleton getInstance() {
+    public static synchronized Singleton getInstance() {
         if (instance == null) {
             instance = new Singleton();
         }
@@ -85,7 +85,7 @@ Giải pháp hiệu quả, đã được kiểm chứng: giúp xử lý vấn đ
       máy.
 
 ```java
-  // Product interface
+ // Product interface
 interface Vehicle {
     void drive();
 }
@@ -103,9 +103,17 @@ class Bike implements Vehicle {
     }
 }
 
-// Creator
+// Creator (Factory Method)
 abstract class VehicleFactory {
+    // factory method
     public abstract Vehicle createVehicle();
+
+    // business logic chung
+    public void testDrive() {
+        Vehicle v = createVehicle();
+        System.out.print("Test drive: ");
+        v.drive();
+    }
 }
 
 // Concrete Creators
@@ -118,6 +126,17 @@ class CarFactory extends VehicleFactory {
 class BikeFactory extends VehicleFactory {
     public Vehicle createVehicle() {
         return new Bike();
+    }
+}
+
+// Client code
+public class Main {
+    public static void main(String[] args) {
+        VehicleFactory carFactory = new CarFactory();
+        carFactory.testDrive();  // Test drive: Driving a car
+
+        VehicleFactory bikeFactory = new BikeFactory();
+        bikeFactory.testDrive(); // Test drive: Riding a bike
     }
 }
 ```
