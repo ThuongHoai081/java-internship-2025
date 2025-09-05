@@ -65,9 +65,17 @@ Giải pháp hiệu quả, đã được kiểm chứng: giúp xử lý vấn đ
 ```java
   public class Singleton {
     private static Singleton instance;
+    private final DataSource dataSource;
 
     private Singleton() {
-        // Private constructor to prevent instantiation
+        // Cấu hình connection pool
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl("jdbc:mysql://localhost:3306/mydb");
+        config.setUsername("root");
+        config.setPassword("123456");
+        config.setMaximumPoolSize(10); // số connection tối đa
+        config.setMinimumIdle(2);      // số connection nhàn rỗi
+        this.dataSource = new HikariDataSource(config);
     }
 
     public static synchronized Singleton getInstance() {
@@ -75,6 +83,10 @@ Giải pháp hiệu quả, đã được kiểm chứng: giúp xử lý vấn đ
             instance = new Singleton();
         }
         return instance;
+    }
+
+    public Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
     }
 }
 ```
@@ -86,59 +98,67 @@ Giải pháp hiệu quả, đã được kiểm chứng: giúp xử lý vấn đ
 
 ```java
  // Product interface
-interface Vehicle {
-    void drive();
+interface IAnimal {
+    void speak();
 }
 
 // Concrete Products
-class Car implements Vehicle {
-    public void drive() {
-        System.out.println("Driving a car");
+class Dog implements IAnimal {
+    public void speak() {
+        System.out.println("Woof woof");
     }
 }
 
-class Bike implements Vehicle {
-    public void drive() {
-        System.out.println("Riding a bike");
+class Cat implements IAnimal {
+    public void speak() {
+        System.out.println("Meow meow");
     }
 }
 
-// Creator (Factory Method)
-abstract class VehicleFactory {
-    // factory method
-    public abstract Vehicle createVehicle();
-
-    // business logic chung
-    public void testDrive() {
-        Vehicle v = createVehicle();
-        System.out.print("Test drive: ");
-        v.drive();
+class Duck implements IAnimal {
+    public void speak() {
+        System.out.println("Quack quack");
     }
 }
 
-// Concrete Creators
-class CarFactory extends VehicleFactory {
-    public Vehicle createVehicle() {
-        return new Car();
-    }
+// Enum để quản lý loại Animal
+enum AnimalType {
+    Dog, Cat, Duck
 }
 
-class BikeFactory extends VehicleFactory {
-    public Vehicle createVehicle() {
-        return new Bike();
+// Simple Factory
+public class AnimalFactory {
+    public static IAnimal CreateAnimal(AnimalType type) {
+        IAnimal animal = null;
+        switch (type) {
+            case Cat:
+                animal = new Cat();
+                break;
+            case Dog:
+                animal = new Dog();
+                break;
+            case Duck:
+                animal = new Duck();
+                break;
+        }
+        return animal;
     }
 }
 
 // Client code
 public class Main {
     public static void main(String[] args) {
-        VehicleFactory carFactory = new CarFactory();
-        carFactory.testDrive();  // Test drive: Driving a car
+        IAnimal dog = AnimalFactory.CreateAnimal(AnimalType.Dog);
+        dog.speak(); // Woof woof
 
-        VehicleFactory bikeFactory = new BikeFactory();
-        bikeFactory.testDrive(); // Test drive: Riding a bike
+        IAnimal cat = AnimalFactory.CreateAnimal(AnimalType.Cat);
+        cat.speak(); // Meow meow
+
+        IAnimal duck = AnimalFactory.CreateAnimal(AnimalType.Duck);
+        duck.speak(); // Quack quack
     }
 }
+
 ```
 
 - **Strategy Pattern:**
